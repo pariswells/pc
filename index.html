@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lockable phone pouches for Australian schools, events and venues. Buy once, no annual fees, with a signal-blocking option.">
+<link rel="icon" type="image/svg+xml" href="assets/phonecubby-app-icon.svg">
+<meta property="og:title" content="PhoneCubby">
+<meta property="og:description" content="Lockable phone pouches for Australian schools, events and venues.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-family:system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>PhoneCubby</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: calm single column, one interactive pouch in the hero, quiet bands below. Mist ground, deep eucalypt ink, amber used only for the lock pin. */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --tint:#E3ECE9; --ink:#14303A; --muted:#566C70; --line:#D3DDDA;
+  --teal:#2D6A6E; --amber:#E8A33D; --on-ink:#F2F5F3;
+  --f-display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --wrap:1120px; --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1F24; --surface:#16292F; --tint:#1A3138; --ink:#E6EEEB; --muted:#9BB0AE; --line:#2A4048;
+  --teal:#7FBDBE; --amber:#F0B356; --on-ink:#0F1F24; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1F24; --surface:#16292F; --tint:#1A3138; --ink:#E6EEEB; --muted:#9BB0AE; --line:#2A4048;
+  --teal:#7FBDBE; --amber:#F0B356; --on-ink:#0F1F24; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+h3{font-size:1.3rem;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--teal)}
+.eyebrow{font:500 .76rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.lede{font-size:1.18rem;color:var(--muted);max-width:34em}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1 var(--f-body);padding:.95em 1.4em;border-radius:999px;text-decoration:none;border:1.5px solid var(--ink);cursor:pointer;transition:transform .15s, background .15s}
+.btn-solid{background:var(--ink);color:var(--on-ink)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+
+/* Header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
+.brand{display:flex;align-items:center;color:var(--ink);text-decoration:none}
+.brand svg{height:34px;width:auto;display:block}
+@media (max-width:440px){.brand svg{height:26px}.nav .btn{padding:.65em .9em;font-size:.84rem}}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.96rem}
+.nav ul a:hover{color:var(--teal)}
+.nav .btn{padding:.7em 1.1em;font-size:.92rem}
+@media (max-width:860px){.nav ul{display:none}}
+
+/* Hero */
+.hero{padding-block:64px 72px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.92rem;color:var(--muted);padding-top:4px}
+.trust span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-right:8px;vertical-align:middle}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero{padding-block:40px 56px}}
+
+.demo{background:var(--tint);border-radius:28px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.demo svg{width:min(260px,70%);height:auto;overflow:visible}
+.phone{transition:transform .7s cubic-bezier(.3,1.3,.5,1)}
+.pin{transition:transform .35s ease}
+.demo.open .phone{transform:translateY(-58px)}
+.demo.open .pin{transform:translateY(10px)}
+.status{display:flex;align-items:center;gap:10px;font:500 .82rem/1.2 var(--f-mono);background:var(--surface);padding:10px 14px;border-radius:999px;border:1px solid var(--line)}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--amber);flex:none}
+.demo.open .status i{background:var(--teal)}
+.demo button{font:600 .95rem var(--f-body);background:none;border:0;color:var(--teal);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+@media (prefers-reduced-motion:reduce){.phone,.pin,.btn{transition:none}}
+
+/* Law band */
+.law{background:var(--ink);color:var(--on-ink)}
+.law .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding-block:28px}
+.law .date{font:700 1.6rem/1 var(--f-display);white-space:nowrap}
+.law .date small{display:block;font:500 .72rem/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.law p{max-width:52em;opacity:.92}
+.law a{color:inherit;font-weight:600;white-space:nowrap}
+@media (max-width:760px){.law .wrap{grid-template-columns:1fr;gap:12px}}
+
+section.block{padding-block:88px}
+.head{display:flex;flex-direction:column;gap:14px;max-width:40em;margin-bottom:44px}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:2px solid var(--ink)}
+.steps li::before{content:"Step " counter(s);font:500 .76rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.steps p{color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* Audiences */
+.aud{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.card .tag{font:500 .76rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.card li{padding-left:22px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--teal)}
+.card .meta{margin-top:auto;font:500 .82rem/1.4 var(--f-mono);color:var(--muted);border-top:1px dashed var(--line);padding-top:14px}
+@media (max-width:760px){.aud{grid-template-columns:1fr}.card{padding:24px}}
+
+/* Products */
+.tinted{background:var(--tint)}
+.prods{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prod{background:var(--surface);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:18px;border:1px solid var(--line);min-width:0}
+.prod.feature{border:2px solid var(--teal)}
+.prod-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chip{font:500 .72rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:var(--tint);color:var(--teal)}
+dl.specs{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:.95rem}
+dl.specs dt{font:500 .78rem/1.6 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+dl.specs dd{margin:0}
+@media (max-width:760px){.prods{grid-template-columns:1fr}.prod{padding:24px}}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 28px}
+.why div{display:flex;flex-direction:column;gap:8px}
+.why h3{font-size:1.12rem}
+.why p{color:var(--muted);font-size:.98rem}
+@media (max-width:900px){.why{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.why{grid-template-columns:1fr}}
+
+/* Quote */
+.quote-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f.full{grid-column:1/-1}
+label{font-weight:600;font-size:.92rem}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.7em .8em;width:100%}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg label{font-weight:500;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:.5em 1em;cursor:pointer;background:var(--bg)}
+.seg input{width:auto;accent-color:var(--teal)}
+form .btn{justify-self:start}
+.note{grid-column:1/-1;font-size:.92rem;color:var(--muted)}
+.done{grid-column:1/-1;background:var(--tint);border-radius:10px;padding:14px 16px;font-size:.95rem}
+.contact-lines{display:flex;flex-direction:column;gap:6px;margin-top:24px;font:500 .9rem/1.5 var(--f-mono);color:var(--muted)}
+@media (max-width:860px){.quote-grid{grid-template-columns:1fr;gap:32px}form{grid-template-columns:1fr;padding:22px}}
+
+/* FAQ */
+.faq{max-width:780px}
+details{border-top:1px solid var(--line);padding-block:20px}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font:600 1.12rem/1.3 var(--f-display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);color:var(--teal)}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:12px;max-width:42em}
+
+footer{border-top:1px solid var(--line);padding-block:40px 56px;font-size:.92rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+footer svg{height:28px;width:auto}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo" viewBox="0 0 263.8 48"><rect x="17" y="7" width="14" height="10" rx="3" fill="currentColor"/><rect x="3.7" y="3.7" width="40.6" height="40.6" rx="10" fill="none" stroke="currentColor" stroke-width="3.4"/><rect x="13" y="12.5" width="22" height="28.5" rx="6.5" fill="var(--teal)"/><path d="M19 23.5 Q24 28 29 23.5" fill="none" stroke="var(--bg)" stroke-width="2.2" stroke-linecap="round"/><path d="M20.4 26.6 L19.5 28.3 M24 27.8 V29.8 M27.6 26.6 L28.5 28.3" stroke="var(--bg)" stroke-width="1.7" stroke-linecap="round"/><circle cx="24" cy="34.6" r="2.5" fill="var(--amber)"/><g transform="translate(58 35) scale(0.833)"><path fill="currentColor" d="M3.2800000000000002 0.0V-26.400000000000002H12.72Q15.32 -26.400000000000002 17.34 -25.8Q19.36 -25.2 20.78 -24.04Q22.2 -22.88 22.939999999999998 -21.14Q23.68 -19.400000000000002 23.68 -17.12Q23.68 -14.120000000000001 22.32 -12.06Q20.96 -10.0 18.3 -8.94Q15.64 -7.88 11.72 -7.88H7.640000000000001V0.0ZM7.640000000000001 -22.88V-11.44H12.280000000000001Q15.76 -11.44 17.5 -12.8Q19.240000000000002 -14.16 19.240000000000002 -17.28Q19.240000000000002 -20.080000000000002 17.62 -21.48Q16.0 -22.88 12.64 -22.88Z M27.56 0.0V-28.2H31.96V-21.72Q31.96 -20.88 31.92 -19.98Q31.88 -19.080000000000002 31.759999999999998 -18.16L31.52 -16.32Q31.4 -15.4 31.24 -14.44H31.96Q32.56 -16.68 33.46 -18.22Q34.36 -19.76 35.739999999999995 -20.54Q37.12 -21.32 39.08 -21.32Q42.68 -21.32 44.44 -18.82Q46.2 -16.32 46.2 -11.32V0.0H41.8V-10.76Q41.8 -14.280000000000001 40.739999999999995 -15.92Q39.68 -17.56 37.56 -17.56Q35.8 -17.56 34.62 -16.52Q33.44 -15.48 32.76 -13.72Q32.08 -11.96 31.88 -9.72V0.0Z M60.36 0.52Q57.36 0.52 55.04 -0.76Q52.72 -2.04 51.42 -4.48Q50.120000000000005 -6.92 50.120000000000005 -10.48Q50.120000000000005 -14.120000000000001 51.480000000000004 -16.520000000000003Q52.84 -18.92 55.14 -20.12Q57.44 -21.32 60.32 -21.32Q63.28 -21.32 65.6 -20.08Q67.92 -18.84 69.25999999999999 -16.4Q70.6 -13.96 70.6 -10.32Q70.6 -6.72 69.25999999999999 -4.3Q67.92 -1.8800000000000001 65.6 -0.68Q63.28 0.52 60.36 0.52ZM60.52 -2.92Q62.32 -2.92 63.599999999999994 -3.7600000000000002Q64.88 -4.6000000000000005 65.56 -6.24Q66.24000000000001 -7.88 66.24000000000001 -10.16Q66.24000000000001 -12.52 65.52000000000001 -14.219999999999999Q64.8 -15.92 63.46 -16.84Q62.120000000000005 -17.76 60.2 -17.76Q58.480000000000004 -17.76 57.18000000000001 -16.94Q55.88 -16.12 55.2 -14.5Q54.52 -12.88 54.52 -10.56Q54.52 -6.92 56.120000000000005 -4.92Q57.72 -2.92 60.52 -2.92Z M74.84 0.0V-20.8H78.60000000000001L78.36 -14.32H79.04Q79.60000000000001 -16.72 80.54 -18.259999999999998Q81.48 -19.8 82.94 -20.560000000000002Q84.4 -21.32 86.36 -21.32Q89.84 -21.32 91.66 -18.84Q93.48 -16.36 93.48 -11.28V0.0H89.08000000000001V-10.84Q89.08000000000001 -14.32 88.04 -15.94Q87.0 -17.56 84.92 -17.56Q83.12 -17.56 81.86000000000001 -16.42Q80.60000000000001 -15.280000000000001 79.92000000000002 -13.440000000000001Q79.24000000000001 -11.6 79.16 -9.44V0.0Z M107.72 0.52Q105.24000000000001 0.52 103.32000000000001 -0.21999999999999997Q101.4 -0.96 100.08000000000001 -2.34Q98.76 -3.72 98.08000000000001 -5.66Q97.4 -7.6000000000000005 97.4 -10.040000000000001Q97.4 -12.48 98.08000000000001 -14.540000000000001Q98.76 -16.6 100.02000000000001 -18.12Q101.28 -19.64 103.14 -20.48Q105.0 -21.32 107.36 -21.32Q109.56 -21.32 111.30000000000001 -20.6Q113.04 -19.88 114.24000000000001 -18.42Q115.44 -16.96 116.03999999999999 -14.780000000000001Q116.64 -12.6 116.48 -9.68L101.60000000000001 -9.56Q101.72 -6.36 103.2 -4.72Q104.8 -2.88 107.76 -2.88Q109.0 -2.88 109.88 -3.1799999999999997Q110.76 -3.48 111.36000000000001 -3.9800000000000004Q111.96000000000001 -4.48 112.34 -5.18Q112.72 -5.88 112.96000000000001 -6.640000000000001L116.76 -5.76Q116.4 -4.28 115.66 -3.14Q114.92 -2.0 113.80000000000001 -1.18Q112.68 -0.36 111.18 0.08000000000000002Q109.68 0.52 107.72 0.52ZM101.76 -12.280000000000001 112.44 -12.4Q112.4 -13.68 112.0 -14.68Q111.36 -16.240000000000002 110.16 -17.0Q108.96000000000001 -17.76 107.4 -17.76Q105.64 -17.76 104.34 -16.86Q103.04 -15.96 102.32000000000001 -14.24Q101.96000000000001 -13.36 101.76 -12.280000000000001Z"/><path fill="var(--teal)" d="M133.92000000000002 0.56Q130.8 0.56 128.32 -0.28Q125.84 -1.12 124.1 -2.8400000000000003Q122.36 -4.5600000000000005 121.46000000000001 -7.0600000000000005Q120.56 -9.56 120.56 -12.92Q120.56 -16.36 121.48 -18.96Q122.4 -21.56 124.14000000000001 -23.36Q125.88000000000001 -25.16 128.24 -26.060000000000002Q130.6 -26.96 133.48000000000002 -26.96Q135.76 -26.96 137.66 -26.4Q139.56 -25.84 140.96 -24.740000000000002Q142.36 -23.64 143.14000000000001 -22.1Q143.92000000000002 -20.56 143.96 -18.6L138.0 -16.96Q138.0 -18.6 137.3 -19.64Q136.6 -20.68 135.54000000000002 -21.22Q134.48000000000002 -21.76 133.24 -21.76Q132.24 -21.76 131.18 -21.340000000000003Q130.12 -20.92 129.24 -19.94Q128.36 -18.96 127.84 -17.36Q127.32000000000001 -15.76 127.32000000000001 -13.36Q127.32000000000001 -10.24 128.20000000000002 -8.32Q129.08 -6.4 130.64000000000001 -5.5Q132.20000000000002 -4.6000000000000005 134.08 -4.6000000000000005Q136.16 -4.6000000000000005 137.3 -5.5Q138.44 -6.4 138.92000000000002 -7.760000000000001Q139.4 -9.120000000000001 139.44 -10.52L145.04000000000002 -9.64Q145.0 -7.48 144.4 -5.6000000000000005Q143.8 -3.72 142.5 -2.34Q141.20000000000002 -0.96 139.08 -0.19999999999999996Q136.96 0.56 133.92000000000002 0.56Z M155.28 0.56Q151.52 0.56 149.62 -1.9800000000000002Q147.72 -4.5200000000000005 147.72 -9.72V-21.12H154.2V-10.56Q154.2 -7.6000000000000005 155.07999999999998 -6.140000000000001Q155.96 -4.68 157.76 -4.68Q158.84 -4.68 159.62 -5.22Q160.4 -5.76 160.94 -6.74Q161.48 -7.72 161.74 -9.0Q162.0 -10.28 162.0 -11.8V-21.12H168.44V0.0H163.32L163.2 -6.5200000000000005H162.4Q161.8 -4.04 160.9 -2.46Q160.0 -0.88 158.64 -0.15999999999999998Q157.28 0.56 155.28 0.56Z M186.16 0.56Q184.16 0.56 182.66 -0.19999999999999996Q181.16 -0.96 180.22 -2.48Q179.28 -4.0 178.95999999999998 -6.24H178.2L178.07999999999998 0.0H172.79999999999998V-28.8H179.23999999999998V-21.8Q179.23999999999998 -20.84 179.09999999999997 -19.78Q178.95999999999998 -18.72 178.73999999999998 -17.56Q178.51999999999998 -16.4 178.28 -15.08H179.2Q179.76 -17.240000000000002 180.68 -18.68Q181.6 -20.12 182.98 -20.86Q184.35999999999999 -21.6 186.23999999999998 -21.6Q188.88 -21.6 190.82 -20.240000000000002Q192.76 -18.88 193.83999999999997 -16.38Q194.92 -13.88 194.92 -10.4Q194.92 -7.04 193.85999999999999 -4.58Q192.79999999999998 -2.12 190.83999999999997 -0.78Q188.88 0.56 186.16 0.56ZM183.76 -4.64Q185.07999999999998 -4.64 186.07999999999998 -5.38Q187.07999999999998 -6.12 187.62 -7.460000000000001Q188.16 -8.8 188.16 -10.6Q188.16 -12.44 187.64 -13.74Q187.12 -15.040000000000001 186.18 -15.760000000000002Q185.23999999999998 -16.48 183.92 -16.48Q183.04 -16.48 182.3 -16.16Q181.56 -15.84 181.0 -15.280000000000001Q180.44 -14.72 180.04 -14.02Q179.64 -13.32 179.44 -12.54Q179.23999999999998 -11.76 179.23999999999998 -11.0V-10.16Q179.23999999999998 -9.32 179.48 -8.36Q179.72 -7.4 180.26 -6.5600000000000005Q180.79999999999998 -5.72 181.65999999999997 -5.18Q182.51999999999998 -4.64 183.76 -4.64Z M211.48 0.56Q209.48 0.56 207.98 -0.19999999999999996Q206.48 -0.96 205.54 -2.48Q204.6 -4.0 204.27999999999997 -6.24H203.51999999999998L203.39999999999998 0.0H198.11999999999998V-28.8H204.55999999999997V-21.8Q204.55999999999997 -20.84 204.41999999999996 -19.78Q204.27999999999997 -18.72 204.05999999999997 -17.56Q203.83999999999997 -16.4 203.6 -15.08H204.51999999999998Q205.07999999999998 -17.240000000000002 206.0 -18.68Q206.92 -20.12 208.29999999999998 -20.86Q209.67999999999998 -21.6 211.55999999999997 -21.6Q214.2 -21.6 216.14 -20.240000000000002Q218.07999999999998 -18.88 219.15999999999997 -16.38Q220.23999999999998 -13.88 220.23999999999998 -10.4Q220.23999999999998 -7.04 219.17999999999998 -4.58Q218.11999999999998 -2.12 216.15999999999997 -0.78Q214.2 0.56 211.48 0.56ZM209.07999999999998 -4.64Q210.39999999999998 -4.64 211.39999999999998 -5.38Q212.39999999999998 -6.12 212.94 -7.460000000000001Q213.48 -8.8 213.48 -10.6Q213.48 -12.44 212.95999999999998 -13.74Q212.44 -15.040000000000001 211.5 -15.760000000000002Q210.55999999999997 -16.48 209.23999999999998 -16.48Q208.35999999999999 -16.48 207.62 -16.16Q206.88 -15.84 206.32 -15.280000000000001Q205.76 -14.72 205.35999999999999 -14.02Q204.95999999999998 -13.32 204.76 -12.54Q204.55999999999997 -11.76 204.55999999999997 -11.0V-10.16Q204.55999999999997 -9.32 204.79999999999998 -8.36Q205.04 -7.4 205.57999999999998 -6.5600000000000005Q206.11999999999998 -5.72 206.97999999999996 -5.18Q207.83999999999997 -4.64 209.07999999999998 -4.64Z M231.55999999999997 7.36Q229.95999999999998 7.36 228.27999999999997 7.08Q226.59999999999997 6.8 225.09999999999997 6.26Q223.59999999999997 5.72 222.51999999999998 4.84L224.07999999999998 -0.88Q225.48 0.44 227.45999999999998 1.08Q229.43999999999997 1.72 231.27999999999997 1.72Q233.39999999999998 1.72 234.77999999999997 0.9Q236.15999999999997 0.08 236.89999999999998 -1.62Q237.64 -3.3200000000000003 237.76 -5.84L237.95999999999998 -9.32H236.99999999999997Q236.64 -6.72 235.73999999999998 -5.08Q234.83999999999997 -3.44 233.45999999999998 -2.66Q232.07999999999998 -1.8800000000000001 230.2 -1.8800000000000001Q227.87999999999997 -1.8800000000000001 226.32 -3.04Q224.76 -4.2 223.98 -6.540000000000001Q223.2 -8.88 223.2 -12.36V-21.12H229.67999999999998V-13.96Q229.67999999999998 -10.28 230.41999999999996 -8.7Q231.15999999999997 -7.12 232.76 -7.12Q233.59999999999997 -7.12 234.27999999999997 -7.6Q234.95999999999998 -8.08 235.44 -8.96Q235.92 -9.84 236.17999999999998 -11.1Q236.43999999999997 -12.36 236.43999999999997 -13.92V-21.12H242.88V-5.6000000000000005Q242.88 -3.08 242.42 -1.0Q241.95999999999998 1.08 241.05999999999997 2.64Q240.15999999999997 4.2 238.79999999999995 5.26Q237.43999999999997 6.32 235.64 6.84Q233.83999999999997 7.36 231.55999999999997 7.36Z"/></g></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="PhoneCubby home"><svg viewBox="0 0 263.8 48"><use href="#logo"/></svg></a>
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#schools">Schools</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#pouches">Pouches</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-solid" href="#quote">Get a sample pack</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Lockable phone pouches · Australian owned</span>
+        <h1>Phones in the cubby.<br><em>People present.</em></h1>
+        <p class="lede">PhoneCubby gives every phone its own pouch. Students and guests keep their own phone, sealed and silent, until it's time to open up. Built for Australian classrooms, gigs, weddings and workplaces.</p>
+        <div class="ctas">
+          <a class="btn btn-solid" href="#quote">Request a quote</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="trust"><span>Buy once, no annual fees</span><span>Signal-blocking option</span><span>Your school colours and crest</span></div>
+      </div>
+
+      <div class="demo" id="demo">
+        <svg viewBox="0 0 200 244" role="img" aria-labelledby="demoTitle">
+          <title id="demoTitle">A PhoneCubby pouch holding a phone</title>
+          <defs><clipPath id="pouchClip"><rect x="0" y="-80" width="200" height="150"/></clipPath></defs>
+          <rect x="24" y="28" width="152" height="210" rx="34" fill="none" stroke="var(--ink)" stroke-width="6"/>
+          <g clip-path="url(#pouchClip)">
+            <g class="phone">
+              <rect x="62" y="34" width="76" height="150" rx="14" fill="var(--ink)"/>
+              <rect x="68" y="42" width="64" height="120" rx="8" fill="var(--teal)" opacity=".55"/>
+            </g>
+          </g>
+          <rect x="46" y="64" width="108" height="162" rx="26" fill="var(--teal)"/>
+          <path d="M80 140 Q100 158 120 140" fill="none" stroke="var(--bg)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M85 152 l-3 6 M100 156 v7 M115 152 l3 6" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/>
+          <g class="pin"><circle cx="100" cy="200" r="9" fill="var(--amber)"/></g>
+        </svg>
+        <div class="status" role="status" aria-live="polite"><i></i><span id="statusText">Locked · silent until the 3:15 bell</span></div>
+        <button type="button" id="toggle">Tap the unlocking base</button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="law" aria-label="Victorian school device rules">
+    <div class="wrap">
+      <div class="date"><small>Victoria</small>Term 1, 2027</div>
+      <p>The “phones off and away” rule extends to every Victorian school, government, Catholic and independent, and now covers smart glasses and wearables too. PhoneCubby gives schools a simple, visible way to make “away” mean away.</p>
+      <a href="https://www.premier.vic.gov.au/smart-glasses-be-banned-all-victorian-schools" target="_blank" rel="noopener">Read the announcement ↗</a>
+    </div>
+  </aside>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">How it works</span>
+        <h2>Ten seconds at the door. Hours of quiet after.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Phone in</h3><p>Each person slides their own phone into a PhoneCubby pouch. Nobody hands over their device, so there's no lost-property stress.</p></li>
+        <li><h3>Click it shut</h3><p>The magnetic pin locks the pouch. The phone stays with its owner, in a bag or pocket, but can't be used.</p></li>
+        <li><h3>Tap to open</h3><p>At the bell or the encore, a tap on the unlocking base releases the pin. Bases sit at exits, classrooms or the front office.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap aud">
+      <article class="card" id="schools">
+        <span class="tag">For schools</span>
+        <h3>Focus in class. Faces in the yard.</h3>
+        <p>Primary and secondary schools in every state, from a single year level pilot to a whole-school rollout.</p>
+        <ul>
+          <li>Meets state “off and away” policies without phone lockers or front-office collection</li>
+          <li>Pouches printed in your school colours with your crest</li>
+          <li>Rollout pack: parent letter, staff briefing slides and student guide</li>
+          <li>Purchase orders and Australian invoicing</li>
+        </ul>
+        <p class="meta">Typical rollout · 2–4 weeks from order to first day</p>
+      </article>
+      <article class="card" id="events">
+        <span class="tag">For events &amp; venues</span>
+        <h3>No screens in the front row.</h3>
+        <p>Comedy rooms, concerts, weddings, conferences, film screenings and workplaces that handle sensitive information.</p>
+        <ul>
+          <li>Protect setlists, unreleased material and guest privacy</li>
+          <li>Guests keep their phone and can step out to an unlock point any time</li>
+          <li>Bulk packs for venues; branded pouches for tours and private events</li>
+          <li>Fast turnaround for one-off events</li>
+        </ul>
+        <p class="meta">Doors 7:30 pm · pouches sealed at entry · open at the exit</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="block tinted" id="pouches">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">The pouches</span>
+        <h2>Two pouches. Pick how quiet you need it.</h2>
+        <p class="lede">Both lock with the same magnetic pin and open on the same base, so you can mix them in one rollout.</p>
+      </div>
+      <div class="prods">
+        <article class="prod">
+          <div class="prod-top"><h3>Cubby Classic</h3><span class="chip">Locks the phone</span></div>
+          <p>A tough, padded pouch that keeps the phone sealed away. Notifications still arrive, so families can reach students the moment the pouch is opened.</p>
+          <dl class="specs">
+            <dt>Fits</dt><dd>Phones up to 6.9″ in most cases</dd>
+            <dt>Lock</dt><dd>Magnetic pin, opened by unlocking base</dd>
+            <dt>Branding</dt><dd>Colour and logo print available</dd>
+            <dt>Best for</dt><dd>Classrooms, everyday school use</dd>
+          </dl>
+        </article>
+        <article class="prod feature">
+          <div class="prod-top"><h3>Cubby Quiet</h3><span class="chip">Locks + blocks signal</span></div>
+          <p>Adds a Faraday lining that blocks mobile, Wi‑Fi and Bluetooth signal, so there's no buzzing in the bag and no wearable pinging through.</p>
+          <dl class="specs">
+            <dt>Fits</dt><dd>Phones up to 6.9″ in most cases</dd>
+            <dt>Lock</dt><dd>Magnetic pin, opened by unlocking base</dd>
+            <dt>Blocks</dt><dd>Mobile, Wi‑Fi, Bluetooth, GPS</dd>
+            <dt>Best for</dt><dd>Exams, performances, sensitive workplaces</dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Why PhoneCubby</span>
+        <h2>Simple to buy. Easy to live with.</h2>
+      </div>
+      <div class="why">
+        <div><h3>Buy once</h3><p>You own the pouches and bases outright. No per-student licence or yearly program fee.</p></div>
+        <div><h3>Try before you commit</h3><p>Order a sample pack, trial it with one class or one show, then scale up.</p></div>
+        <div><h3>Local support</h3><p>An Australian team on Australian hours, with replacement pouches shipped fast.</p></div>
+        <div><h3>Made to be yours</h3><p>School colours, crests, venue logos and numbered pouches for easy tracking.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tinted" id="quote">
+    <div class="wrap quote-grid">
+      <div class="head" style="margin:0">
+        <span class="eyebrow">Get started</span>
+        <h2>Request a sample pack or quote</h2>
+        <p class="lede">Tell us roughly how many people and when you'd like to start. We'll reply within one business day with pricing and a sample pack offer.</p>
+        <div class="contact-lines">
+          <span>hello@phonecubby.com.au</span>
+          <span>Melbourne, Victoria</span>
+        </div>
+      </div>
+      <form id="quoteForm" novalidate>
+        <div class="f full">
+          <span style="font-weight:600;font-size:.92rem">I'm buying for</span>
+          <div class="seg">
+            <label><input type="radio" name="who" id="who-school" value="School" checked> A school</label>
+            <label><input type="radio" name="who" id="who-event" value="Event"> An event or venue</label>
+            <label><input type="radio" name="who" id="who-work" value="Workplace"> A workplace</label>
+          </div>
+        </div>
+        <div class="f"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Sam Nguyen"></div>
+        <div class="f"><label for="org">School or organisation</label><input id="org" name="org" placeholder="St Brigid's College"></div>
+        <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="sam@school.vic.edu.au"></div>
+        <div class="f"><label for="state">State</label>
+          <select id="state" name="state"><option>VIC</option><option>NSW</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select>
+        </div>
+        <div class="f"><label for="qty">Roughly how many pouches?</label><input id="qty" name="qty" inputmode="numeric" placeholder="650"></div>
+        <div class="f"><label for="type">Pouch type</label>
+          <select id="type" name="type"><option>Not sure yet</option><option>Cubby Classic</option><option>Cubby Quiet (signal-blocking)</option><option>A mix of both</option></select>
+        </div>
+        <div class="f full"><label for="msg">Anything else?</label><textarea id="msg" name="msg" rows="3" placeholder="Start date, year levels, event dates, branding…"></textarea></div>
+        <button class="btn btn-solid" type="submit">Send request</button>
+        <p class="note">Or email hello@phonecubby.com.au directly.</p>
+        <div class="done" id="done" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Questions</span><h2>Things schools and venues ask</h2></div>
+      <div class="faq">
+        <details><summary>What happens in an emergency?</summary><p>Staff carry a portable unlocking base, and every exit point can have one. Families can always reach students through the school office, as they would during class time.</p></details>
+        <details><summary>Can a student force a pouch open?</summary><p>Not without visible damage. A forced pouch is easy for staff to spot, and numbered pouches make it simple to see whose it is.</p></details>
+        <details><summary>Does Victoria require pouches?</summary><p>No. From Term 1, 2027 devices must be switched off and put away during school hours in all Victorian schools. Pouches are one way to do that. Others include lockers and front-office collection. Many schools prefer pouches because students keep their own phone.</p></details>
+        <details><summary>Do we need the signal-blocking version?</summary><p>Most classrooms don't. Cubby Quiet suits exams, performances, smart watches and places where any buzz or transmission is a problem.</p></details>
+        <details><summary>How long do the pouches last?</summary><p>They're designed for daily school use across multiple years. We sell replacements individually so you never need to rebuy a full set.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg viewBox="0 0 263.8 48" aria-label="PhoneCubby" role="img"><use href="#logo"/></svg>
+    <span>PhoneCubby · Melbourne, Australia · © 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var demo=document.getElementById('demo'),btn=document.getElementById('toggle'),txt=document.getElementById('statusText');
+  btn.addEventListener('click',function(){
+    var open=demo.classList.toggle('open');
+    txt.textContent=open?'Unlocked · see you tomorrow':'Locked · silent until the 3:15 bell';
+    btn.textContent=open?'Lock it again':'Tap the unlocking base';
+  });
+  var form=document.getElementById('quoteForm'),done=document.getElementById('done');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=form.email.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){done.hidden=false;done.textContent='Add an email address so we can reply with your quote.';form.email.focus();return;}
+    done.hidden=false;
+    done.textContent='This preview site isn’t connected to an inbox yet, so your request wasn’t sent. Please email hello@phonecubby.com.au.';
+  });
+})();
+</script>
+
+</body>
+</html>
